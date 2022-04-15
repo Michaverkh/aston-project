@@ -1,0 +1,9 @@
+.main {
+    background-color: bisque;
+    min-height: 500px;
+}
+
+.content-wrapper {
+    padding: 100px 200px;
+/*    border: 1px solid lightblue;*/
+}
