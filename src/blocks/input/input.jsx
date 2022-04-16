@@ -1,12 +1,15 @@
-import React from 'react';
-import './input.css'
+import React from "react";
+import "./input.css";
 
-const Input = (props) => {
+function Input (props) {
+
     return (
-        <>
-            <input type={props.type} placeholder={props.placeholder}/>
-        </>
-        )
-};
+        <input
+            placeholder={props.placeholder}
+            type={props.type}
+        />
+    );
+
+}
 
 export default Input;

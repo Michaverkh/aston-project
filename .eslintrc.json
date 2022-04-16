@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+//        "eslint:all",
+//        "plugin:react/all"
+//        "plugin:prettier/recommended",
+//        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+//        "prettier"
+    ],
+    "rules": {
+        "require-jsdoc": "off"
+    }
+}

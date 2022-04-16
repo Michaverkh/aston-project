@@ -1,14 +1,12 @@
-import React from 'react';
-import './character.css'
+import React from "react";
+import "./character.css";
 
-const Character = (props) => {
-    const character = props.character
+function Character (props) {
 
-    return (
-        <div>
+    const {character} = props;
 
-        </div>
-    );
-};
+    return <div />;
+
+}
 
 export default Character;
