@@ -4,11 +4,9 @@ import Header from "./blocks/header/header";
 import React from "react";
 
 function App () {
-
     return (
         <div className="App">
             <Header />
-
             <Main />
         </div>
     );
