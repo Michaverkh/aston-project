@@ -1,9 +1,5 @@
-.main {
-    background-color: bisque;
-    min-height: 500px;
-}
 
-.content-wrapper {
-    padding: 100px 200px;
-/*    border: 1px solid lightblue;*/
+.main {
+    padding: 100px 0;
+    background: linear-gradient( to top, rgba(5,3,29,1) 57%, rgba(31,87,41,1) 100%);
 }

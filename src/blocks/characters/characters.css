@@ -1,0 +1,27 @@
+.cards {
+    width: 280px;
+    margin: 0 auto;
+    display: block;
+}
+
+.loading {
+    color: white;
+}
+
+@media(min-width: 768px) {
+    .cards {
+        width: 709px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px
+    }
+}
+
+@media(min-width: 1440px) {
+    .cards {
+        width: 1220px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 40px
+    }
+}
