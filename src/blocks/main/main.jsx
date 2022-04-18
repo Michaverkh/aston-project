@@ -1,31 +1,24 @@
-import React, {useEffect, useState} from "react";
-import "./main.css";
-import {useDispatch, useSelector} from "react-redux";
-import {getData} from "../../actions/api";
-import Characters from "../characters/characters";
-import Search from "../search/search";
+import React from 'react';
+import ContentPage from "../content-page/content-page";
+import { Routes, Route} from 'react-router-dom';
+import "./main.css"
+import FavoritesPage from "../favorites-page/favorites-page";
+import HistoryPage from "../history-page/history-page";
+import LogInPage from "../log-in-page/log-in-page";
+import SignInPage from "../sign-in-page/sign-in-page";
 
-function Main () {
-    const dispatch = useDispatch()
-    const characters = useSelector(state => state.characters.items)
-    const isFetching = useSelector(state => state.characters.isFetching)
-    const [query, setQuery] = useState('')
-
-    useEffect(()=>{
-        dispatch(getData(query))
-    }, [query])
-
-    console.log(query)
-
+const Main = () => {
     return (
-        <div className="main">
-            <div className="content-wrapper">
-                <Search getQuery={(q) => setQuery(q)}/>
-                <Characters characters={characters} isFetching={isFetching}/>
-            </div>
+        <div className={"main"}>
+            <Routes>
+                <Route path='/' element={<ContentPage/>}/>
+                <Route path='/favorites' element={<FavoritesPage/>}/>
+                <Route path='/history' element={<HistoryPage/>}/>
+                <Route path='/log-in' element={<LogInPage/>}/>
+                <Route path='/sign-in' element={<SignInPage/>}/>
+            </Routes>
         </div>
     );
-
-}
+};
 
 export default Main;
