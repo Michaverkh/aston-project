@@ -1,4 +1,44 @@
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo__text {
+    font-size: 40px;
+    font-weight: 700;
+    color: black;
+
+}
+
 .logo__photo {
-    width: 30px;
+    width: 80px;
     height: auto;
+}
+
+.header {
+    width: 280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+
+@media(min-width: 768px) {
+    .header {
+        width: 709px;
+    }
+}
+
+@media(min-width: 1440px) {
+    .header {
+        width: 1220px;
+    }
+}
+
+.header__buttons *:not(:last-child) {
+    margin-right: 20px;
 }

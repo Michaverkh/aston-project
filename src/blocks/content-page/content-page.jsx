@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from "react";
 import "./content-page.css";
 import {useDispatch, useSelector} from "react-redux";
-import {getData} from "../../actions/api";
+import {getCharacters} from "../../actions/api";
 import Characters from "../characters/characters";
 import Search from "../search/search";
 
 function ContentPage () {
     const dispatch = useDispatch()
-    const characters = useSelector(state => state.characters.items)
-    const isFetching = useSelector(state => state.characters.isFetching)
+    const characters = useSelector(state => state.toolkit.items)
+    const isFetching = useSelector(state => state.toolkit.isFetching)
     const [query, setQuery] = useState('')
 
     useEffect(()=>{
-        dispatch(getData(query))
+        dispatch(getCharacters(query))
     }, [query])
 
-    console.log(query)
+    console.log(characters)
 
     return (
         <div>

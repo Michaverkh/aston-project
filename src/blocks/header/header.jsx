@@ -17,7 +17,7 @@ function Header () {
 
                 <div>
                     {isRegistr || isLogin ? (
-                        <>
+                        <div className="header__buttons">
                             {/*<p className='user'>user:{user.payload.username}</p>*/}
                             {/*<Link to='/favorites' className='button__regist'>*/}
                             {/*    <Button>Favorites</Button>*/}
@@ -28,16 +28,16 @@ function Header () {
                             {/*<Button onClick={exitUser} className='exit'>*/}
                             {/*    Exit*/}
                             {/*</Button>*/}
-                        </>
+                        </div>
                     ) : (
-                        <>
+                        <div className="header__buttons">
                             <Link to='/log-in' className='link'>
                                 <Button>Login</Button>
                             </Link>
                             <Link to='/sign-in' className='link'>
                                 <Button>Registration</Button>
                             </Link>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>
