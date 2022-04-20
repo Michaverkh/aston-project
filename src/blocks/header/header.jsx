@@ -10,7 +10,6 @@ function Header () {
     return (
         <header className='container'>
             <div className='header'>
-                <div></div>
                 <Link to='/' className='logo'>
                     <img src={logo} className='logo__photo' />
                     <div className='logo__text'>Breaking Bad</div>
