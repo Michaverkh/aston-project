@@ -1,41 +1,47 @@
 import React, {useState} from "react";
-import Input from "../input/input";
-import Button from "../button/button";
+import { Form, Input, Button } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import {registrAction} from "../../toolkit-reducers/loginSlice";
 
 function SignInPage () {
+    const dispatch = useDispatch()
+    let navigate = useNavigate()
+    const onFinish = (values) => {
+        // localStorage.setItem(values.username, JSON.stringify(values))
+        dispatch(registrAction(values))
+        navigate('/')
+    }
 
-    const [
-            email,
-            setEmail
-        ] = useState(""),
-        [
-            password,
-            setPassword
-        ] = useState("");
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo)
+    }
 
     return (
-        <div className="registration">
-            <h2>
-                Регистрация
-            </h2>
+        <div className='form'>
+            <Form
+                name='basic'
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete='off'
+                className='form__reg'
+            >
+                <Form.Item label='Username' name='username' rules={[{ required: true, message: 'Please input your username!' }]}>
+                    <Input />
+                </Form.Item>
 
-            <Input
-                placeholder="логин"
-                setValue={setEmail}
-                type="text"
-                value={email}
-            />
+                <Form.Item label='Password' name='password' rules={[{ required: true, message: 'Please input your password!' }]}>
+                    <Input.Password />
+                </Form.Item>
 
-            <Input
-                placeholder="пароль"
-                setValue={setPassword}
-                type="password"
-                value={password}
-            />
-
-            <Button>
-                Войти
-            </Button>
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                    <Button type='primary' htmlType='submit'>
+                        Submit
+                    </Button>
+                </Form.Item>
+            </Form>
         </div>
     );
 

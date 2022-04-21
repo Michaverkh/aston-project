@@ -15,8 +15,6 @@ function ContentPage () {
         dispatch(getCharacters(query))
     }, [query])
 
-    console.log(characters)
-
     return (
         <div>
             <div className="content-wrapper">
