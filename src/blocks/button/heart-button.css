@@ -1,0 +1,20 @@
+.heart__button {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.heart__button:hover {
+    background-color: floralwhite;
+}
+
+.heart__button:active {
+    background-color: lightpink;
+}

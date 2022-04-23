@@ -9,9 +9,9 @@ import {unregistrAction} from "../../toolkit-reducers/loginSlice";
 
 function Header () {
     const navigate = useNavigate()
-    const isRegistr = useSelector((state) => state.login.isRegistr)
     const isLogin = useSelector((state) => state.login.isLogin)
     const user = useSelector((state) => state.login.user)
+    const users = useSelector((state) => state.login.users)
     const dispatch = useDispatch()
     function exitUser() {
         dispatch(unregistrAction(null))
@@ -27,9 +27,9 @@ function Header () {
                 </Link>
 
                 <div>
-                    {isRegistr || isLogin ? (
+                    {isLogin ? (
                         <div className="header__buttons">
-                            <p className='user'>user:{user.payload.username}</p>
+                            <p className='user'>user:{user.username}</p>
                             <Link to='/favorites' className='button__regist'>
                                 <Button>Favorites</Button>
                             </Link>

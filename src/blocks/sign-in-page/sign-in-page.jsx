@@ -8,8 +8,21 @@ function SignInPage () {
     const dispatch = useDispatch()
     let navigate = useNavigate()
     const onFinish = (values) => {
-        // localStorage.setItem(values.username, JSON.stringify(values))
-        dispatch(registrAction(values))
+        const obj = {
+            username: values.username,
+            password: values.password,
+            favorites: [],
+            history: []
+        }
+        localStorage.setItem(values.username, JSON.stringify(obj))
+        dispatch(
+            registrAction({
+                username: values.username,
+                password: values.password,
+                favorites: [],
+                history: []
+            })
+        )
         navigate('/')
     }
 
