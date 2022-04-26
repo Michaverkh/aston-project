@@ -1,6 +1,7 @@
 import axios from "axios";
 import {setCharacters, setIsFetching} from "../toolkit-reducers/fetchingSlice";
-// import {setCharacters, setIsFetching} from "../toolkit-reducers/api-reducer-toolkit"
+import {debounce} from "../utils/debounce";
+
 
 export const getCharacters = (query) => {
     let url = "";
@@ -11,3 +12,5 @@ export const getCharacters = (query) => {
         dispatch(setCharacters(response.data))
     }
 };
+
+export const getCharactersDebounced = debounce(() => getCharacters);
