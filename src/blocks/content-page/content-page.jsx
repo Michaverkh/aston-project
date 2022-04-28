@@ -4,18 +4,21 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCharacters, getCharactersDebounced} from "../../actions/api";
 import Characters from "../characters/characters";
 import Search from "../search/search";
+import {addHistoryItem} from "../../actions/add-history-item";
 
 function ContentPage () {
     const dispatch = useDispatch()
     const characters = useSelector(state => state.toolkit.items)
     const isFetching = useSelector(state => state.toolkit.isFetching)
-    const [query, setQuery] = useState('')
+    const currentUser = useSelector(state => state.login.user)
 
-    console.log(query)
+    const [query, setQuery] = useState('')
 
     useEffect(()=>{
         dispatch(getCharacters(query))
-        // getCharactersDebounced(query)
+        if (currentUser) {
+            addHistoryItem(currentUser.username, query)
+        }
     }, [query])
 
     return (

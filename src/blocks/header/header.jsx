@@ -11,7 +11,6 @@ function Header () {
     const navigate = useNavigate()
     const isLogin = useSelector((state) => state.login.isLogin)
     const user = useSelector((state) => state.login.user)
-    const users = useSelector((state) => state.login.users)
     const dispatch = useDispatch()
     function exitUser() {
         dispatch(unregistrAction(null))

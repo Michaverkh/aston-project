@@ -1,0 +1,23 @@
+.character {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white;
+}
+
+.character__header {
+    margin-right: 40px;
+}
+
+.character img {
+    width: 300px;
+    height: auto;
+}
+
+.character__params {
+    padding-top: 50px;
+}
+
+.character__params li:not(:last-child){
+    margin-bottom: 20px;
+}

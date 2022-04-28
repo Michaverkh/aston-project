@@ -1,24 +1,19 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
-import Form from "antd/es/form";
-import Input from "antd/es/input";
-import Button from "antd/es/button";
+import { Form, Input, Button } from 'antd'
 import {loginAction} from "../../toolkit-reducers/loginSlice";
+import "../content-page/content-page.css"
 
 const LogInPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [loginStatus, setLoginStatus] = useState()
-    const [passwordStatus, setPasswordStatus] = useState()
 
     const onFinish = (userData) => {
         const user = localStorage.getItem(userData.username)
         if (!user) {
-            // setLoginStatus({validateStatus: 'error', help: 'user is not found'})
             console.log('login error')
         } else if (user && JSON.parse(user).password != userData.password) {
-            // setPasswordStatus({validateStatus: 'error', help: 'Password is wrong'})
             console.log('login error')
         } else if (
             JSON.parse(user).username === userData.username &&
@@ -34,7 +29,13 @@ const LogInPage = () => {
 
     return (
         <div className='container'>
-            <Form name='normal_login' className='form' onFinish={onFinish}>
+            <Form
+                name='normal_login'
+                className='form__reg'
+                onFinish={onFinish}
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+            >
                 <Form.Item name='username' rules={[{ required: true, message: 'Please input your Username!' }]}>
                     <Input placeholder='Username' />
                 </Form.Item>
@@ -47,7 +48,7 @@ const LogInPage = () => {
                     <Button type='primary' htmlType='submit' className='login-form-button'>
                         Log in
                     </Button>
-                    Or <Link to='/registration'>register now!</Link>
+                    Or <Link to='/sign-in'>register now!</Link>
                 </Form.Item>
             </Form>
         </div>

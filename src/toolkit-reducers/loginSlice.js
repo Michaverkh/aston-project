@@ -7,13 +7,13 @@ const loginSlice = createSlice({
         isLogin: false,
     },
     reducers: {
-        registrAction(state, payload) {
+        registrAction(state, action) {
             state.isLogin = true
-            state.user = payload
+            state.user = action.payload
         },
-        unregistrAction(state, payload) {
+        unregistrAction(state, action) {
             state.isLogin = false
-            state.user = payload
+            state.user = action.payload
         },
         loginAction(state, action) {
             state.isLogin = true

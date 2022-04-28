@@ -4,7 +4,8 @@ const fetchingSlice = createSlice({
     name: "toolkit",
     initialState: {
         items: [],
-        isFetching: true
+        isFetching: true,
+        selectedCharacter: null
     },
     reducers: {
         setCharacters(state, action) {
@@ -13,9 +14,12 @@ const fetchingSlice = createSlice({
         },
         setIsFetching(state, action) {
             state.isFetching = action.payload;
+        },
+        setCurrentCharacter(state, action) {
+            state.selectedCharacter = action.payload
         }
     }
 })
 
 export default fetchingSlice.reducer
-export const {setCharacters, setIsFetching} = fetchingSlice.actions
+export const {setCharacters, setIsFetching, setCurrentCharacter} = fetchingSlice.actions

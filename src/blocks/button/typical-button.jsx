@@ -1,8 +1,7 @@
 import React from "react";
-import "./heart-button.css";
-import HeartTwoTone from "@ant-design/icons/lib/icons/HeartTwoTone";
+import "./typical-button.css";
 
-function HeartButton (props) {
+function typicalButton (props) {
 
     return (
         <button onClick = {props.clickHandler} type={"button"} className="heart__button">
@@ -12,4 +11,4 @@ function HeartButton (props) {
 
 }
 
-export default HeartButton;
+export default typicalButton;
