@@ -15,13 +15,13 @@
     align-items: center;
 }
 
-.history__list li {
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: white;
-}
+/*.history__list li {*/
+/*    display: block;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px;*/
+/*    background-color: white;*/
+/*}*/
 
-.history__list li:not(:last-child) {
+.history__list .link:not(:last-child) {
     margin-right: 20px;
 }

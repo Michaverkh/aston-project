@@ -1,7 +1,7 @@
 import React from "react";
 import "./typical-button.css";
 
-function typicalButton (props) {
+function TypicalButton (props) {
 
     return (
         <button onClick = {props.clickHandler} type={"button"} className="heart__button">
@@ -11,4 +11,4 @@ function typicalButton (props) {
 
 }
 
-export default typicalButton;
+export default TypicalButton;

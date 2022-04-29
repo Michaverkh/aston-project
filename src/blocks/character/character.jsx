@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import "../../styles/global-styles.css"
 import {setCurrentCharacter} from "../../toolkit-reducers/fetchingSlice";
 
-const Character = ({ item }) => {
+const Character = ({ item, mainContentPage}) => {
     const isLogin = useSelector((state) => state.login.isLogin)
     const currentUser = useSelector(state => state.login.user);
     const dispatch = useDispatch()
@@ -19,6 +19,18 @@ const Character = ({ item }) => {
             localStorage.setItem(currentUser.username, JSON.stringify(currentUserObject));
         }
     }
+
+    const removeFromFavorite = () => {
+        if (currentUser) {
+            const currentUserObject = JSON.parse(localStorage.getItem(currentUser.username));
+            const favorites = currentUserObject.favorites
+            const correctedFavorites = favorites.filter(favorite => favorite !== item.char_id)
+            currentUserObject.favorites = correctedFavorites
+            localStorage.setItem(currentUser.username, JSON.stringify(currentUserObject));
+        }
+    }
+
+
 
     return (
         <div className='card'>
@@ -43,10 +55,13 @@ const Character = ({ item }) => {
                         </li>
                     </ul>
                     <div className='card__buttons-wrapper'>
-                        {isLogin && (
-                            <TypicalButton clickHandler={addToFavorite}>add to favorites</TypicalButton>
-                        )}
-
+                        {isLogin &&
+                            mainContentPage ? (
+                                    <TypicalButton clickHandler={addToFavorite}>add to favorites</TypicalButton>
+                                ) : (
+                                    <TypicalButton clickHandler={removeFromFavorite}>remove from favorites</TypicalButton>
+                                )
+                        }
                         <Link to='/show-more' className='link'>
                             <TypicalButton clickHandler={() => dispatch(setCurrentCharacter(item))}>show more</TypicalButton>
                         </Link>

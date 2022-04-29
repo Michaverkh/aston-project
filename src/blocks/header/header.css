@@ -1,8 +1,15 @@
 .logo {
+    text-decoration: none;
+}
+
+.logo button {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .logo__text {

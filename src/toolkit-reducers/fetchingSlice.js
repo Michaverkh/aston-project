@@ -5,7 +5,8 @@ const fetchingSlice = createSlice({
     initialState: {
         items: [],
         isFetching: true,
-        selectedCharacter: null
+        selectedCharacter: null,
+        query: ""
     },
     reducers: {
         setCharacters(state, action) {
@@ -17,9 +18,12 @@ const fetchingSlice = createSlice({
         },
         setCurrentCharacter(state, action) {
             state.selectedCharacter = action.payload
+        },
+        setQueryParam(state, action) {
+            state.query = action.payload
         }
     }
 })
 
 export default fetchingSlice.reducer
-export const {setCharacters, setIsFetching, setCurrentCharacter} = fetchingSlice.actions
+export const {setCharacters, setIsFetching, setCurrentCharacter, setQueryParam} = fetchingSlice.actions

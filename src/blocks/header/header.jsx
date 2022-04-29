@@ -6,6 +6,7 @@ import { Button } from 'antd';
 import {useNavigate} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {unregistrAction} from "../../toolkit-reducers/loginSlice";
+import {setQueryParam} from "../../toolkit-reducers/fetchingSlice";
 
 function Header () {
     const navigate = useNavigate()
@@ -21,8 +22,10 @@ function Header () {
         <header className='container'>
             <div className='header'>
                 <Link to='/' className='logo'>
-                    <img src={logo} className='logo__photo' />
-                    <div className='logo__text'>Breaking Bad</div>
+                    <button type={"button"} onClick={() => dispatch(setQueryParam(""))}>
+                        <img src={logo} className='logo__photo' />
+                        <div className='logo__text'>Breaking Bad</div>
+                    </button>
                 </Link>
 
                 <div>
