@@ -4,12 +4,13 @@ import {debounce} from "../../utils/debounce";
 
 const Search = ({getQuery}) => {
     const [text, setText] = useState('')
-    const onChange = (q) => {
-        setText(q)
-        getQuery(q)
-    }
 
-    const handleChange = (e) => debounce(onChange(e.target.value));
+    const debouncedQuery = useCallback(debounce(getQuery), [])
+
+    const onChange = (e) => {
+        setText(e.target.value)
+        debouncedQuery(e.target.value)
+    }
 
     return (
         <section className="search">
@@ -19,7 +20,7 @@ const Search = ({getQuery}) => {
                     className="form-control"
                     placeholder="type character's name"
                     value={text}
-                    onChange={handleChange}
+                    onChange={ onChange }
                     autoFocus
                 />
             </form>

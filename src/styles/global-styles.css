@@ -1,0 +1,26 @@
+.container {
+    width: 280px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+@media(min-width: 768px) {
+    .container {
+        width: 709px;
+    }
+}
+
+@media(min-width: 1440px) {
+    .container {
+        width: 1220px;
+    }
+}
+
+.link {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}

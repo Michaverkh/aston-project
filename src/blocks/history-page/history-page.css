@@ -1,0 +1,27 @@
+
+
+.history h2 {
+    margin-bottom: 50px;
+    color: white;
+}
+
+.history__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*.history__list li {*/
+/*    display: block;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px;*/
+/*    background-color: white;*/
+/*}*/
+
+.history__list .link:not(:last-child) {
+    margin-right: 20px;
+}

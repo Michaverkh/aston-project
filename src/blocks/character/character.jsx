@@ -1,17 +1,36 @@
 import React, {useState} from "react";
 import "./character.css";
-import HeartButton from "../button/heart-button";
 import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import TypicalButton from "../button/typical-button";
+import {Link} from "react-router-dom";
+import "../../styles/global-styles.css"
+import {setCurrentCharacter} from "../../toolkit-reducers/fetchingSlice";
 
-const Character = ({ item }) => {
+const Character = ({ item, mainContentPage}) => {
     const isLogin = useSelector((state) => state.login.isLogin)
-    const currentUser = useSelector(state => state.login.user.username);
+    const currentUser = useSelector(state => state.login.user);
+    const dispatch = useDispatch()
 
     const addToFavorite = () => {
-        const currentUserObject = JSON.parse(localStorage.getItem(currentUser));
-        currentUserObject.favorites.push(item.char_id)
-        localStorage.setItem(currentUser, JSON.stringify(currentUserObject));
+        if (currentUser) {
+            const currentUserObject = JSON.parse(localStorage.getItem(currentUser.username));
+            currentUserObject.favorites.push(item.char_id)
+            localStorage.setItem(currentUser.username, JSON.stringify(currentUserObject));
+        }
     }
+
+    const removeFromFavorite = () => {
+        if (currentUser) {
+            const currentUserObject = JSON.parse(localStorage.getItem(currentUser.username));
+            const favorites = currentUserObject.favorites
+            const correctedFavorites = favorites.filter(favorite => favorite !== item.char_id)
+            currentUserObject.favorites = correctedFavorites
+            localStorage.setItem(currentUser.username, JSON.stringify(currentUserObject));
+        }
+    }
+
+
 
     return (
         <div className='card'>
@@ -35,9 +54,19 @@ const Character = ({ item }) => {
                             <strong>Status:</strong> {item.status}
                         </li>
                     </ul>
-                    {isLogin ? (
-                        <HeartButton clickHandler={addToFavorite}>add to favorites</HeartButton>
-                    ) : (<></>)}
+                    <div className='card__buttons-wrapper'>
+                        {isLogin &&
+                            mainContentPage ? (
+                                    <TypicalButton clickHandler={addToFavorite}>add to favorites</TypicalButton>
+                                ) : (
+                                    <TypicalButton clickHandler={removeFromFavorite}>remove from favorites</TypicalButton>
+                                )
+                        }
+                        <Link to='/show-more' className='link'>
+                            <TypicalButton clickHandler={() => dispatch(setCurrentCharacter(item))}>show more</TypicalButton>
+                        </Link>
+                    </div>
+
                 </div>
             </div>
         </div>
