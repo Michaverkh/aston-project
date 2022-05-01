@@ -5,6 +5,7 @@ const loginSlice = createSlice({
     initialState: {
         user: null,
         isLogin: false,
+        isFavoritesChanged: false
     },
     reducers: {
         registrAction(state, action) {
@@ -18,9 +19,12 @@ const loginSlice = createSlice({
         loginAction(state, action) {
             state.isLogin = true
             state.user = action.payload
+        },
+        changeFavoritesList(state) {
+            state.isFavoritesChanged = !state.isFavoritesChanged
         }
     },
 })
 
 export default loginSlice.reducer
-export const { registrAction, unregistrAction, loginAction} = loginSlice.actions
+export const { registrAction, unregistrAction, loginAction, changeFavoritesList} = loginSlice.actions

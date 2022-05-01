@@ -6,17 +6,20 @@ import TypicalButton from "../button/typical-button";
 import {Link} from "react-router-dom";
 import "../../styles/global-styles.css"
 import {setCurrentCharacter} from "../../toolkit-reducers/fetchingSlice";
+import {changeFavoritesList} from "../../toolkit-reducers/loginSlice";
 
 const Character = ({ item, mainContentPage}) => {
     const isLogin = useSelector((state) => state.login.isLogin)
     const currentUser = useSelector(state => state.login.user);
     const dispatch = useDispatch()
+    let [isAdded, addToFavorites] = useState(false)
 
     const addToFavorite = () => {
         if (currentUser) {
             const currentUserObject = JSON.parse(localStorage.getItem(currentUser.username));
             currentUserObject.favorites.push(item.char_id)
             localStorage.setItem(currentUser.username, JSON.stringify(currentUserObject));
+            addToFavorites(!isAdded)
         }
     }
 
@@ -27,10 +30,19 @@ const Character = ({ item, mainContentPage}) => {
             const correctedFavorites = favorites.filter(favorite => favorite !== item.char_id)
             currentUserObject.favorites = correctedFavorites
             localStorage.setItem(currentUser.username, JSON.stringify(currentUserObject));
+            dispatch(changeFavoritesList())
+            addToFavorites(!isAdded)
         }
     }
 
+    let buttonText = 'add to favorites'
+    let handler = addToFavorite
+    if (isAdded) {
+        handler = removeFromFavorite;
+        buttonText = 'remove'
+    }
 
+    const characterLink = `/show-more/id:${item.char_id}`
 
     return (
         <div className='card'>
@@ -57,12 +69,12 @@ const Character = ({ item, mainContentPage}) => {
                     <div className='card__buttons-wrapper'>
                         {isLogin &&
                             mainContentPage ? (
-                                    <TypicalButton clickHandler={addToFavorite}>add to favorites</TypicalButton>
+                                    <TypicalButton clickHandler={handler}>{buttonText}</TypicalButton>
                                 ) : (
-                                    <TypicalButton clickHandler={removeFromFavorite}>remove from favorites</TypicalButton>
+                                    <TypicalButton clickHandler={removeFromFavorite}>remove</TypicalButton>
                                 )
                         }
-                        <Link to='/show-more' className='link'>
+                        <Link to={characterLink} className='link'>
                             <TypicalButton clickHandler={() => dispatch(setCurrentCharacter(item))}>show more</TypicalButton>
                         </Link>
                     </div>

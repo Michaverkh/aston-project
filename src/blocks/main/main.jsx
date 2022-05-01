@@ -8,18 +8,32 @@ import LogInPage from "../log-in-page/log-in-page";
 import SignInPage from "../sign-in-page/sign-in-page";
 import CharacterPage from "../character-page/character-page";
 import "../../styles/global-styles.css"
+import {useSelector} from "react-redux";
+import RequireAuth from "../../hoc/RequireAuth";
 
 const Main = () => {
+
+    const character = useSelector(state => state.toolkit.selectedCharacter)
+    const characterLink = `/show-more/id:${character.char_id}`
+
     return (
         <div className={"main"}>
             <div className={"container"}>
                 <Routes>
                     <Route path='/' element={<ContentPage/>}/>
-                    <Route path='/favorites' element={<FavoritesPage/>}/>
-                    <Route path='/history' element={<HistoryPage/>}/>
+                    <Route path='/favorites' element={
+                        <RequireAuth>
+                            <FavoritesPage/>
+                        </RequireAuth>
+                    }/>
+                    <Route path='/history' element={
+                        <RequireAuth>
+                            <HistoryPage/>
+                        </RequireAuth>
+                    }/>
                     <Route path='/log-in' element={<LogInPage/>}/>
                     <Route path='/sign-in' element={<SignInPage/>}/>
-                    <Route path='/show-more' element={<CharacterPage/>}/>
+                    <Route path={characterLink} element={<CharacterPage/>}/>
                 </Routes>
             </div>
         </div>
@@ -27,3 +41,5 @@ const Main = () => {
 };
 
 export default Main;
+
+//http://localhost:3000/favorites

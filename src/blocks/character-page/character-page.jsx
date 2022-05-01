@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useSelector} from "react-redux";
 import "./character-page.css"
 import "../../styles/global-styles.css"
+import TestContext from "../../context/context";
 
 const CharacterPage = () => {
 
     const character = useSelector(state => state.toolkit.selectedCharacter)
+
+    // Code which typed below is not functional. Its only demonstration of the ReactContext implementation
+
+    const testdata = useContext(TestContext)
+    console.log(testdata)
+
+    // end of test code
 
     return (
         <div className="character">
