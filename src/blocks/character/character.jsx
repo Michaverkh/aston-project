@@ -7,12 +7,13 @@ import {Link} from "react-router-dom";
 import "../../styles/global-styles.css"
 import {setCurrentCharacter} from "../../toolkit-reducers/fetchingSlice";
 import {changeFavoritesList} from "../../toolkit-reducers/loginSlice";
+import {useTougle} from "../../hooks/use-tougle";
 
 const Character = ({ item, mainContentPage}) => {
     const isLogin = useSelector((state) => state.login.isLogin)
     const currentUser = useSelector(state => state.login.user);
     const dispatch = useDispatch()
-    let [isAdded, addToFavorites] = useState(false)
+    let [isAdded, addToFavorites] = useTougle(false)
 
     const addToFavorite = () => {
         if (currentUser) {
