@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import "./character.css";
 import {useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
@@ -84,6 +85,13 @@ const Character = ({ item, mainContentPage}) => {
             </div>
         </div>
     )
+}
+
+Character.propTypes = {
+    item: PropTypes.shape({
+        char_id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+    })
 }
 
 export default Character
