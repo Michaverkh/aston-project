@@ -3,6 +3,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     color: white;
+    height: 100%;
 }
 
 .character__header {

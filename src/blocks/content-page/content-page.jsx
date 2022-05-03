@@ -6,7 +6,7 @@ import Characters from "../characters/characters";
 import Search from "../search/search";
 import {addHistoryItem} from "../../actions/add-history-item";
 import {setQueryParam} from "../../toolkit-reducers/fetchingSlice";
-import {characterApi, useFetchCharacters} from "../../actions/api-request";
+import {useGetCharactersQuery} from "../../actions/api-request";
 
 function ContentPage () {
     const dispatch = useDispatch()
@@ -23,7 +23,7 @@ function ContentPage () {
         }
     }, [query])
 
-    const {data} = characterApi
+    const {data} = useGetCharactersQuery()
 
     return (
         <div>

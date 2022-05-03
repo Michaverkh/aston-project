@@ -14,7 +14,8 @@ import RequireAuth from "../../hoc/RequireAuth";
 const Main = () => {
 
     const character = useSelector(state => state.toolkit.selectedCharacter)
-    const characterLink = `/show-more/id:${character.char_id}`
+    let characterLink = ""
+    character ? characterLink = `/show-more/id:${character.char_id}` : characterLink
 
     return (
         <div className={"main"}>

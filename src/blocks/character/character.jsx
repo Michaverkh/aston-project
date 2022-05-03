@@ -70,11 +70,11 @@ const Character = ({ item, mainContentPage}) => {
                     </ul>
                     <div className='card__buttons-wrapper'>
                         {isLogin &&
-                            mainContentPage ? (
+                            (mainContentPage ? (
                                     <TypicalButton clickHandler={handler}>{buttonText}</TypicalButton>
                                 ) : (
                                     <TypicalButton clickHandler={removeFromFavorite}>remove</TypicalButton>
-                                )
+                                ))
                         }
                         <Link to={characterLink} className='link'>
                             <TypicalButton clickHandler={() => dispatch(setCurrentCharacter(item))}>show more</TypicalButton>

@@ -13,3 +13,5 @@ Redux
 
 1. Используем Modern Redux with Redux Toolkit "src/toolkit-reducers/fetchingSlice.js"
 2. Используем слайсы "src/toolkit-reducers/fetchingSlice.js"
+3. Есть хотя бы одна кастомная мидлвара "src/middleware/middleware.js"
+4. Используется RTK Query "src/blocks/content-page/content-page.jsx" 29

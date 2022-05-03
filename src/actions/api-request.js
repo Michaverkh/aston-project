@@ -15,4 +15,4 @@ export const characterApi = createApi({
     }),
 })
 
-export const {} = characterApi
+export const {useGetCharactersQuery, useGetCharacterQuery} = characterApi
