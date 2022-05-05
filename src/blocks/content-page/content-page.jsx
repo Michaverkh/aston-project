@@ -6,6 +6,7 @@ import Characters from "../characters/characters";
 import Search from "../search/search";
 import {addHistoryItem} from "../../actions/add-history-item";
 import {setQueryParam} from "../../toolkit-reducers/fetchingSlice";
+import {useGetCharactersQuery} from "../../actions/api-request";
 
 function ContentPage () {
     const dispatch = useDispatch()
@@ -21,6 +22,8 @@ function ContentPage () {
             addHistoryItem(currentUser.username, query)
         }
     }, [query])
+
+    const {data} = useGetCharactersQuery()
 
     return (
         <div>

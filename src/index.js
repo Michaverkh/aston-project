@@ -4,6 +4,7 @@ import App from "./App";
 import {Provider} from "react-redux";
 import {store, persistor} from "./toolkit-reducers/index";
 import { BrowserRouter } from 'react-router-dom'
+import TestContext from "./context/context";
 import { PersistGate } from 'redux-persist/integration/react'
 import "./index.css"
 
@@ -13,7 +14,9 @@ root.render(
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <BrowserRouter>
-                    <App />
+                    <TestContext.Provider value={'test-data'}>
+                        <App />
+                    </TestContext.Provider>
                 </BrowserRouter>
             </PersistGate>
         </Provider>

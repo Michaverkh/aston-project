@@ -9,22 +9,25 @@ const LogInPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const [userNameError, setUserNameError] = useState({})
+    const [passwordError, setPasswordError] = useState({})
+
     const onFinish = (userData) => {
         const user = localStorage.getItem(userData.username)
         if (!user) {
-            console.log('login error')
+            setUserNameError({validateStatus: 'error', help: 'User is not exist'})
         } else if (user && JSON.parse(user).password != userData.password) {
-            console.log('login error')
+            setPasswordError({validateStatus: 'error', help: 'Password is wrong'})
+            setUserNameError({})
         } else if (
             JSON.parse(user).username === userData.username &&
             JSON.parse(user).password === userData.password
         ) {
             dispatch(loginAction(userData))
+            navigate('/')
         } else {
-            console.log('login error')
+            console.log('error')
         }
-
-        navigate('/')
     }
 
     return (
@@ -36,11 +39,11 @@ const LogInPage = () => {
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 16 }}
             >
-                <Form.Item name='username' rules={[{ required: true, message: 'Please input your Username!' }]}>
+                <Form.Item {...userNameError} name='username' rules={[{ required: true, message: 'Please input your Username!' }]}>
                     <Input placeholder='Username' />
                 </Form.Item>
 
-                <Form.Item name='password' rules={[{ required: true, message: 'Please input your Password!' }]}>
+                <Form.Item {...passwordError} name='password' rules={[{ required: true, message: 'Please input your Password!' }]}>
                     <Input  type='password' placeholder='Password' />
                 </Form.Item>
 

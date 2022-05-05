@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import "../../styles/global-styles.css"
 import {setQueryParam} from "../../toolkit-reducers/fetchingSlice";
 import {useDispatch} from "react-redux";
+import PropTypes from "prop-types";
 
 function HistoryButton (props) {
 
@@ -17,6 +18,10 @@ function HistoryButton (props) {
         </Link>
     );
 
+}
+
+HistoryButton.propTypes = {
+    query: PropTypes.string
 }
 
 export default HistoryButton;
